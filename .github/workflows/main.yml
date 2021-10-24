@@ -1,3 +1,5 @@
+name: FastAPI CI/CD
+
 
 on:
   # Trigger the workflow on push
