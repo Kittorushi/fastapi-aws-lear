@@ -17,6 +17,7 @@ schemas.Base.metadata.create_all(engine)
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
+
 def get_db():
     db = SessionLocal()
     try:
@@ -48,6 +49,10 @@ def get_db():
 #     userList = db.query(schemas.User).filter(schemas.User.id == id).first()
 #     return userList
 
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 @app.post('/createid', status_code=status.HTTP_201_CREATED)
 def create_id(user: models.IDGenerate, db: Session = Depends(get_db)):
