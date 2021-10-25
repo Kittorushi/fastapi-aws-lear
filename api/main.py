@@ -7,6 +7,7 @@ from api import models
 from api import schemas
 from api import database 
 from api.database import SessionLocal, engine
+from mangum import Mangum
 
 
 
@@ -184,6 +185,4 @@ def update_post(post_id, user: models.CreatePost, db: Session = Depends(get_db))
 
     return "update data"
 
-
-if __name__ == '__main__':
-    app
+handler = Mangum(app=app)
