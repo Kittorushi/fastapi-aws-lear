@@ -44,16 +44,9 @@ jobs:
       - name: Activate Virtual ENV
         run: python -m venv venv && source venv/bin/activate && pip3 install -r requirements.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'
-
-
         
-      - name: Run Tests Pytest  
-        run: pip install pytest
-
-
-
-      - name: Run Tests   
-        run: python -m venv venv && source venv/bin/activate
+      - name: Run Tests
+        run: source venv/bin/activate && pytest     
 
       - name: Create archive of dependencies
         run: |
@@ -61,9 +54,8 @@ jobs:
           zip -r9 ../../../../api.zip .
       - name: Add API files to Zip file
         run: cd ./api && zip -g ../api.zip -r .
-        
-      - name: Run Tests commontest
-        run: source venv/bin/activate && pytest        
+
+      
       - name: Upload zip file artifact
         uses: actions/upload-artifact@v2
         with:
