@@ -190,4 +190,5 @@ def update_post(post_id, user: models.CreatePost, db: Session = Depends(get_db))
 
     return "update data"
 
+
 handler = Mangum(app=app)
