@@ -52,7 +52,7 @@ def get_db():
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Hello Worlwd"}
 
 @app.post('/createid', status_code=status.HTTP_201_CREATED)
 def create_id(user: models.IDGenerate, db: Session = Depends(get_db)):
